@@ -9,7 +9,7 @@ let segundoResultado = null;
 let movimientos = 0;
 let aciertos = 0;
 let temporizador = false;
-let timer = 45;
+let timer = 60;
 let timepoRegresivoId = null;
 
 //Apuntando a documento Html las estadisticas
@@ -23,20 +23,19 @@ let numeros = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 
 //uso la propiedad Sort para crear un arreglo ordenado aleatoriamente del arreglo anterior
 numeros = numeros.sort(()=> {return Math.random()-0.5});
-console.log(numeros)
 
 
 //Funciones
 function contarTiempo(){
     timepoRegresivoId = setInterval(()=>{
-        timer--;
         mostrarTiempo.innerHTML = `Tiempo ${timer} segundos`;
-
+        timer--;
+        
         if(timer == 0 ){
             clearInterval(timepoRegresivoId);
-            bloquearTarjetas()
+            bloquearTarjetas(numeros)
         }
-    }, 1000)
+    }, 1000, timer)
 }
 
 function bloquearTarjetas(){
@@ -65,6 +64,7 @@ function destapar(id){
         tarjeta1= document.getElementById(id);
         primerResultado = numeros[id]
         tarjeta1.innerHTML = primerResultado;
+        //`<img scr="./img/${primerResultado}.png" alt=">`;
 
 
         //desabilitar primer boton para que no pueda aumentar contador
