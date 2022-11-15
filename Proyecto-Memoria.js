@@ -56,6 +56,11 @@ function destapar(id){
             //Aumentar aciertos
             aciertos++;
             mostrarAciertos.innerHTML = `Aciertos: ${aciertos}`;
+
+            if (aciertos == 8){
+                mostrarAciertos.innerHTML = `¡¡¡¡¡Eres el ganador con : ${aciertos} aciertos!!!!!`
+            }
+
         }
         else{
             //Mostrar momentaneamente valores y volver a tapar
