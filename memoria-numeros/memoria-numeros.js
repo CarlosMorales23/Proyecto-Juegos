@@ -1,5 +1,7 @@
 'use strict'
 
+swal("Hello world!");
+
 //Inicializacion de variables
 let tarjetasDestapadas = 0;
 let tarjeta1 = null;
