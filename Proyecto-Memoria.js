@@ -9,7 +9,7 @@ let segundoResultado = null;
 let movimientos = 0;
 let aciertos = 0;
 let temporizador = false;
-let timer = 3;
+let timer = 45;
 let timepoRegresivoId = null;
 
 //Apuntando a documento Html las estadisticas
@@ -34,8 +34,18 @@ function contarTiempo(){
 
         if(timer == 0 ){
             clearInterval(timepoRegresivoId);
+            bloquearTarjetas()
         }
     }, 1000)
+}
+
+function bloquearTarjetas(){
+    for ( let i = 0; i <= 15; i++){
+        let tarjetaBloqueada = document.getElementById(i);
+        tarjetaBloqueada.innerHTML= numeros[i];
+        tarjetaBloqueada.disabled = true;
+
+    }
 }
 
 
