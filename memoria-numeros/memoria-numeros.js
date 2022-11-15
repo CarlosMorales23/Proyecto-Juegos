@@ -9,8 +9,9 @@ let segundoResultado = null;
 let movimientos = 0;
 let aciertos = 0;
 let temporizador = false;
-let timer = 4;
+let timer = 45;
 let timepoRegresivoId = null;
+let timerBloquearCartas = null;
 
 //Apuntando a documento Html las estadisticas
 let mostrarMovimientos = document.getElementById("movimientos")
@@ -34,6 +35,7 @@ function contarTiempo(){
 
         if(timer == 0 ){
             clearInterval(timepoRegresivoId);
+            clearTimeout(timerBloquearCartas);
             bloquearTarjetas()
         }
     }, 1000)
@@ -100,14 +102,14 @@ function destapar(id){
             }
         }
         else{
-            //Mostrar momentaneamente valores y volver a tapar
-            setTimeout(() =>{
+            // mostrar momentaneamente y volver a tapar
+            timerBloquearCartas = setTimeout(() => {
                 tarjeta1.innerHTML = ' ';
                 tarjeta2.innerHTML = ' ';
                 tarjeta1.disabled = false;
                 tarjeta2.disabled = false;
                 tarjetasDestapadas = 0;
-            },750);
+            }, 300);
         }
     }
 }
