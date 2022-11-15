@@ -1,5 +1,7 @@
 'use strict'
 
+swal(`¡¡Hola!!, \n Vamos aventarnos una Partidita de Memoria!`);
+
 //Inicializacion de variables
 let tarjetasDestapadas = 0;
 let tarjeta1 = null;
@@ -9,7 +11,7 @@ let segundoResultado = null;
 let movimientos = 0;
 let aciertos = 0;
 let temporizador = false;
-let timer = 6;
+let timer = 45;
 let timepoRegresivoId = null;
 let timerBloquearCartas = null;
 
@@ -105,6 +107,7 @@ function destapar(id){
             if (aciertos == 8){
                 ganar.play()
                 clearInterval(timepoRegresivoId);
+                swal("Buen trabajo Carlitos!", "Eres un genio!");
                 mostrarAciertos.innerHTML = `¡¡¡¡¡Ganaste con : ${aciertos} aciertos!!!!!`;
                 mostrarTiempo.innerHTML = `Genial! Ganaste! y te sobraron: ${timer} segundos`;
                 mostrarMovimientos.innerHTML = `Ganaste! y solo usaste: ${movimientos} movimiento`;
