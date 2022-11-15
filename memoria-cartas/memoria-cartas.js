@@ -9,8 +9,16 @@ let segundoResultado = null;
 let movimientos = 0;
 let aciertos = 0;
 let temporizador = false;
-let timer = 60;
+let timer = 6;
 let timepoRegresivoId = null;
+let timerBloquearCartas = null;
+
+const correcto= new Audio ('./sounds/correcto.wav')
+const error = new Audio ('./sounds/error.wav')
+const ganar =new Audio ('./sounds/ganar.wav')
+const perder = new Audio ('./sounds/perder.wav')
+const seleccion = new Audio ('./sounds/seleccion.wav')
+
 
 //Apuntando a documento Html las estadisticas
 let mostrarMovimientos = document.getElementById("movimientos")
@@ -19,7 +27,7 @@ let mostrarTiempo = document.getElementById("t-restante");
 
 
 //*Creo el arreglo de 16 numeros pares para las cartas. 
-let numeros = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+let numeros = ["1.png", "1.png", "2.png", "2.png", "3.png", "3.png", "4.png", "4.png", "5.png", "5.png", "6.png", "6.png", "7.png", "7.png", "8.png", "8.png"];
 
 //uso la propiedad Sort para crear un arreglo ordenado aleatoriamente del arreglo anterior
 numeros = numeros.sort(()=> {return Math.random()-0.5});
@@ -28,12 +36,15 @@ numeros = numeros.sort(()=> {return Math.random()-0.5});
 //Funciones
 function contarTiempo(){
     timepoRegresivoId = setInterval(()=>{
-        mostrarTiempo.innerHTML = `Tiempo ${timer} segundos`;
         timer--;
+        mostrarTiempo.innerHTML = `Tiempo: ${timer} segundos`;
+        
         
         if(timer == 0 ){
             clearInterval(timepoRegresivoId);
-            bloquearTarjetas(numeros)
+            clearTimeout(timerBloquearCartas);
+            bloquearTarjetas(numeros);
+            perder.play();
         }
     }, 1000, timer)
 }
@@ -41,7 +52,7 @@ function contarTiempo(){
 function bloquearTarjetas(){
     for ( let i = 0; i <= 15; i++){
         let tarjetaBloqueada = document.getElementById(i);
-        tarjetaBloqueada.innerHTML= numeros[i];
+        tarjetaBloqueada.innerHTML= `<img src="./img/${numeros[i]}"></img>`;
         tarjetaBloqueada.disabled = true;
 
     }
@@ -62,10 +73,9 @@ function destapar(id){
     if (tarjetasDestapadas== 1){
         //mostrar primer numero
         tarjeta1= document.getElementById(id);
-        primerResultado = numeros[id]
-        tarjeta1.innerHTML = primerResultado;
-        //`<img scr="./img/${primerResultado}.png" alt=">`;
-
+        primerResultado = numeros[id];
+        tarjeta1.innerHTML = `<img src="./img/${numeros[id]}"></img>`;
+        seleccion.play();
 
         //desabilitar primer boton para que no pueda aumentar contador
         tarjeta1.disabled = true
@@ -74,7 +84,7 @@ function destapar(id){
         //Mostrar segundo número
         tarjeta2 = document.getElementById(id)
         segundoResultado = numeros[id];
-        tarjeta2.innerHTML = segundoResultado;
+        tarjeta2.innerHTML = `<img src="./img/${numeros[id]}"></img>`;
 
         //desabilitar primer boton para que no pueda aumentar contador
         tarjeta2.disabled = true
@@ -90,8 +100,10 @@ function destapar(id){
             //Aumentar aciertos
             aciertos++;
             mostrarAciertos.innerHTML = `Aciertos: ${aciertos}`;
+            correcto.play()
 
             if (aciertos == 8){
+                ganar.play()
                 clearInterval(timepoRegresivoId);
                 mostrarAciertos.innerHTML = `¡¡¡¡¡Ganaste con : ${aciertos} aciertos!!!!!`;
                 mostrarTiempo.innerHTML = `Genial! Ganaste! y te sobraron: ${timer} segundos`;
@@ -100,14 +112,15 @@ function destapar(id){
             }
         }
         else{
+            error.play()
             //Mostrar momentaneamente valores y volver a tapar
-            setTimeout(() =>{
+            timerBloquearCartas = setTimeout(() => {
                 tarjeta1.innerHTML = ' ';
                 tarjeta2.innerHTML = ' ';
                 tarjeta1.disabled = false;
                 tarjeta2.disabled = false;
                 tarjetasDestapadas = 0;
-            },750);
+            }, 300);
         }
     }
 }

@@ -9,7 +9,7 @@ let segundoResultado = null;
 let movimientos = 0;
 let aciertos = 0;
 let temporizador = false;
-let timer = 45;
+let timer = 4;
 let timepoRegresivoId = null;
 
 //Apuntando a documento Html las estadisticas
