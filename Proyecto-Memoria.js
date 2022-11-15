@@ -92,7 +92,10 @@ function destapar(id){
             mostrarAciertos.innerHTML = `Aciertos: ${aciertos}`;
 
             if (aciertos == 8){
-                mostrarAciertos.innerHTML = `¡¡¡¡¡Eres el ganador con : ${aciertos} aciertos!!!!!`
+                mostrarAciertos.innerHTML = `¡¡¡¡¡Ganaste con : ${aciertos} aciertos!!!!!`;
+                mostrarTiempo.innerHTML = `Genial! Ganaste! y te sobraron: ${timer} segundos`;
+                mostrarMovimientos.innerHTML = `Ganaste! y solo usaste: ${movimientos} movimiento`;
+
             }
 
         }
