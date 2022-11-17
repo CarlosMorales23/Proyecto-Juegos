@@ -15,6 +15,31 @@ let timer = 45;
 let timepoRegresivoId = null;
 let timerBloquearCartas = null;
 
+
+//Ejemplo Promesas
+function generarSelectorUsuarios(jugadores){
+    console.log(jugadores);
+
+    const miForm = document.getElementById('miForm');
+    let miHTML = '<select><option disabled selected hidden>Jugador</option>'
+
+
+    for(const usuario of jugadores){
+    miHTML+=`<option value=${usuario.nombre.toLowerCase()}>${usuario.nombre}</option>`
+    }
+    miHTML += '</select>'
+    miForm.innerHTML = miHTML
+}
+
+
+fetch('./jugadores.json')
+.then((response)=>{
+    return response.json();
+}).then((jugadores)=>{
+    generarSelectorUsuarios(jugadores)
+})
+
+
 const correcto= new Audio ('./sounds/correcto.wav')
 const error = new Audio ('./sounds/error.wav')
 const ganar =new Audio ('./sounds/ganar.wav')

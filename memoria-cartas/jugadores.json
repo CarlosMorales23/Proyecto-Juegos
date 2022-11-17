@@ -1,0 +1,44 @@
+[
+    {
+        "jugador": 1, 
+        "nombre": "Carlitos",
+        "edad": 5
+    }
+    ,
+    {
+        "jugador": 2, 
+        "nombre": "Sofia",
+        "edad": 2
+    }
+    ,
+    {
+        "jugador": 3, 
+        "nombre": "Alexandra",
+        "edad": 30
+    }
+    ,
+    {
+        "jugador": 4, 
+        "nombre": "Carlos",
+        "edad": 32
+    }
+    ,
+    {
+        "jugador": 5, 
+        "nombre": "Luis",
+        "edad": 60
+    }
+    ,
+    {
+        "jugador": 6, 
+        "nombre": "Marina",
+        "edad": 55
+    }
+    ,
+    {
+        "jugador": 7, 
+        "nombre": "Invitado",
+        "edad": "Desconocida"
+    }
+    
+]
