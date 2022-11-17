@@ -8,10 +8,14 @@ body{
 
 main{
     width: 730px;
-    margin: 50px auto 50px;
+    margin: 25px auto 50px;
     display: flex;
     align-items: center;
 
+}
+
+div{
+    text-align: center;
 }
 
 .section1{
@@ -31,15 +35,31 @@ form{
 
 select{
     width: 25%;
-    height: 50px;
+    height: 35px;
     border: 5px solid black;
     margin: 5px;
     text-align: center;
-    font-size: 25px;
+    font-size: 15px;
     border-radius: 50px;
     background-color: skyblue;
     font-weight: bold;
 }
+
+
+
+#registrarPuntaje{
+    width: 15%;
+    height: 25px;
+    border: 5px solid black;
+    margin: 5px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 50px;
+    background-color: black;
+    font-weight: bold;
+    color: white;
+}
+
 
 button{
     height: 100px;

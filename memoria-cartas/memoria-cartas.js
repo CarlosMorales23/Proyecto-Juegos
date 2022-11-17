@@ -16,30 +16,83 @@ let timepoRegresivoId = null;
 let timerBloquearCartas = null;
 
 
+//Array de Objeto para registrar puntajes
+let puntajesUsuarios = [
+    {
+    "nombre": "Carlitos",
+    "puntaje": 0
+    }
+    ,
+    {
+    "nombre": "Sofia",
+    "puntaje": 0
+    }
+    ,
+    {
+    "nombre": "Alexandra",
+    "puntaje": 0
+    }
+    ,
+    {
+    "nombre": "Carlos",
+    "puntaje": 0
+    }
+    ,
+    {
+    "nombre": "Luis",
+    "puntaje": 0
+    }
+    ,
+    {
+    "nombre": "Marina",
+    "puntaje": 0
+    }
+    ,
+    {
+    "nombre": "Invitado",
+    "puntaje": 0
+    }    
+]
+;
+
+const botonRegistrarPuntaje=document.getElementById('registrarPuntaje');
+const selectorUsuarios = document.getElementById('selectorUsuarios');
+
+botonRegistrarPuntaje.addEventListener('click' , ()=>{
+    const usuarioActual = puntajesUsuarios.find((user)=>{
+    return user.name === selectorUsuarios.value;
+})
+    console.log(usuarioActual)
+})
+
+
+
+//******************************************************************************************* */
+
 //Ejemplo Promesas
-function generarSelectorUsuarios(jugadores){
-    console.log(jugadores);
+function generarSelectorUsuarios(usuarios){
+    console.log(usuarios);
 
     const miForm = document.getElementById('miForm');
-    let miHTML = '<select><option disabled selected hidden>Jugador</option>'
+    let miHTML = '<select id="selectorUsuarios"><option disabled selected hidden>Jugador</option>'
 
 
-    for(const usuario of jugadores){
-    miHTML+=`<option value=${usuario.nombre.toLowerCase()}>${usuario.nombre}</option>`
+    for(const usuario of usuarios){
+    miHTML+=`<option value=${usuario.nombre}>${usuario.nombre}</option>`
     }
     miHTML += '</select>'
     miForm.innerHTML = miHTML
 }
 
-
-fetch('./jugadores.json')
+//************************************************************************************************ */
+fetch('./usuarios.json')
 .then((response)=>{
     return response.json();
-}).then((jugadores)=>{
-    generarSelectorUsuarios(jugadores)
+}).then((usuarios)=>{
+    generarSelectorUsuarios(usuarios)
 })
 
-
+//Sonidos del Juego
 const correcto= new Audio ('./sounds/correcto.wav')
 const error = new Audio ('./sounds/error.wav')
 const ganar =new Audio ('./sounds/ganar.wav')

@@ -40,5 +40,9 @@
         "nombre": "Invitado",
         "edad": "Desconocida"
     }
+    ,
+    {
+        "puntaje": [0]
+    }
     
 ]
