@@ -65,8 +65,6 @@ botonRegistrarPuntaje.addEventListener('click' , ()=>{
     console.log(usuarioActual)
 })
 
-
-
 //******************************************************************************************* */
 
 //Ejemplo Promesas
