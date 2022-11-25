@@ -18,16 +18,22 @@ let timerBloquearCartas = null;
 
 //Esto cambiara a boton Jugar
 
-const botonRegistrarPuntaje=document.getElementById('jugar');
-const selectorUsuarios = document.getElementById('selectorUsuarios');
+const botonJugar=document.getElementById('jugar');
+// const selectorUsuarios = document.getElementById('selectorUsuarios');
 
 
-botonRegistrarPuntaje.addEventListener('click' , ()=>{
-    const usuarioActual = puntajesUsuarios.find((user)=>{
-    return user.name === selectorUsuarios.value;
+botonJugar.addEventListener('click', ()=>{
+    console.log(`me diste click`)
 })
-    console.log(usuarioActual)
-})
+
+
+
+// botonJugar.addEventListener('click' , ()=>{
+//     const usuarioActual = puntajesUsuarios.find((user)=>{
+//     return user.name === selectorUsuarios.value;
+// })
+//     console.log(usuarioActual)
+// })
 
 
 
