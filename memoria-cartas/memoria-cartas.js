@@ -16,47 +16,11 @@ let timepoRegresivoId = null;
 let timerBloquearCartas = null;
 
 
-//Array de Objeto para registrar puntajes
-let puntajesUsuarios = [
-    {
-    "nombre": "Carlitos",
-    "puntaje": 0
-    }
-    ,
-    {
-    "nombre": "Sofia",
-    "puntaje": 0
-    }
-    ,
-    {
-    "nombre": "Alexandra",
-    "puntaje": 0
-    }
-    ,
-    {
-    "nombre": "Carlos",
-    "puntaje": 0
-    }
-    ,
-    {
-    "nombre": "Luis",
-    "puntaje": 0
-    }
-    ,
-    {
-    "nombre": "Marina",
-    "puntaje": 0
-    }
-    ,
-    {
-    "nombre": "Invitado",
-    "puntaje": 0
-    }    
-]
-;
+//Esto cambiara a boton Jugar
 
-const botonRegistrarPuntaje=document.getElementById('registrarPuntaje');
+const botonRegistrarPuntaje=document.getElementById('jugar');
 const selectorUsuarios = document.getElementById('selectorUsuarios');
+
 
 botonRegistrarPuntaje.addEventListener('click' , ()=>{
     const usuarioActual = puntajesUsuarios.find((user)=>{
@@ -64,6 +28,8 @@ botonRegistrarPuntaje.addEventListener('click' , ()=>{
 })
     console.log(usuarioActual)
 })
+
+
 
 //******************************************************************************************* */
 
@@ -183,7 +149,7 @@ function destapar(id){
             if (aciertos == 8){
                 ganar.play()
                 clearInterval(timepoRegresivoId);
-                swal("Buen trabajo Carlitos!", "Eres un genio!");
+                swal("Buen trabajo!", "Eres un@ geni@!");
                 mostrarAciertos.innerHTML = `¡¡¡¡¡Ganaste con : ${aciertos} aciertos!!!!!`;
                 mostrarTiempo.innerHTML = `Genial! Ganaste! y te sobraron: ${timer} segundos`;
                 mostrarMovimientos.innerHTML = `Ganaste! y solo usaste: ${movimientos} movimiento`;
