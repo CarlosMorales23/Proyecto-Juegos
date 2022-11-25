@@ -14,27 +14,7 @@ let temporizador = false;
 let timer = 45;
 let timepoRegresivoId = null;
 let timerBloquearCartas = null;
-
-
-//Esto cambiara a boton Jugar
-
-const botonJugar=document.getElementById('jugar');
-// const selectorUsuarios = document.getElementById('selectorUsuarios');
-
-
-botonJugar.addEventListener('click', ()=>{
-    console.log(`me diste click`)
-})
-
-
-
-// botonJugar.addEventListener('click' , ()=>{
-//     const usuarioActual = puntajesUsuarios.find((user)=>{
-//     return user.name === selectorUsuarios.value;
-// })
-//     console.log(usuarioActual)
-// })
-
+let cuantasVecesSeJugo= 0
 
 
 //******************************************************************************************* */
@@ -52,6 +32,7 @@ function generarSelectorUsuarios(usuarios){
     }
     miHTML += '</select>'
     miForm.innerHTML = miHTML
+
 }
 
 //************************************************************************************************ */
@@ -61,6 +42,19 @@ fetch('./usuarios.json')
 }).then((usuarios)=>{
     generarSelectorUsuarios(usuarios)
 })
+
+
+const botonJugar=document.getElementById('jugar');
+
+botonJugar.addEventListener('click', ()=>{
+    console.log(`me diste click`)
+    localStorage.setItem("Cuntas veces se jugo: ", cuantasVecesSeJugo++)
+})
+
+
+
+
+
 
 //Sonidos del Juego
 const correcto= new Audio ('./sounds/correcto.wav')
