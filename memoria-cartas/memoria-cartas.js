@@ -43,9 +43,7 @@ fetch('./usuarios.json')
     generarSelectorUsuarios(usuarios)
 })
 
-
 const botonJugar=document.getElementById('jugar');
-
 botonJugar.addEventListener('click', ()=>{
     console.log(`me diste click`)
     localStorage.setItem("Cuntas veces se jugo: ", cuantasVecesSeJugo++)
